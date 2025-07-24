@@ -1,11 +1,8 @@
 <template>
-  <div>
-    <router-view />
-  </div>
+  <div>分页器</div>
 </template>
 
 <script setup lang="ts">
-
 </script>
 
 <style scoped>
