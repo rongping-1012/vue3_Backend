@@ -6,11 +6,14 @@ import type { LoginParams, LoginResponse } from '@/api/user/type'
 import type { UserState } from './type/type'
 // 引入token工具函数
 import { setToken, getToken } from '@/utils/token'
+// 引入常量路由
+import { routes } from '@/router/routers'
 
 let userStore = defineStore('user', {
   state: (): UserState => {
     return {
       token: getToken(), // 用户登录的token
+      menuRouters: routes // 动态生成菜单
     }
   },
   actions: {
