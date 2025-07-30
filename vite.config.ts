@@ -1,10 +1,12 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
-import path from 'path';
+import { defineConfig, loadEnv } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import path from 'path'
 import { viteMockServe } from 'vite-plugin-mock'
 
-export default defineConfig(({ command }) => {
+export default defineConfig(({ command, mode }) => {
+  // 获取各种环境下的对应变量
+  let env = loadEnv(mode, process.cwd())
   return {
     plugins: [
       vue(),
@@ -16,30 +18,39 @@ export default defineConfig(({ command }) => {
         enable: command === 'serve',
       }),
     ],
-      resolve: {
+    resolve: {
       alias: {
         // 使用绝对路径（__dirname 指向当前配置文件所在目录）
         '@': path.resolve(__dirname, 'src'),
-          // 可选：添加其他常用路径别名
-          '@assets': path.resolve(__dirname, 'src/assets'),
-            '@components': path.resolve(__dirname, 'src/components'),
-              '@views': path.resolve(__dirname, 'src/views'),
-    },
+        // 可选：添加其他常用路径别名
+        '@assets': path.resolve(__dirname, 'src/assets'),
+        '@components': path.resolve(__dirname, 'src/components'),
+        '@views': path.resolve(__dirname, 'src/views'),
+      },
     },
 
     // 添加 TypeScript 选项（可选，根据需要调整）
     esbuild: {
       jsxFactory: 'h',
-        jsxFragment: 'Fragment',
-          jsxInject: `import { h } from 'vue'`,
-  },
+      jsxFragment: 'Fragment',
+      jsxInject: `import { h } from 'vue'`,
+    },
     css: {
       preprocessorOptions: {
         scss: {
           // 支持全局 SCSS 变量
           additionalData: `@use "@/styles/variable.scss" as *;`,
-      },
+        },
       },
     },
+    server: {
+      proxy: {
+        [env.VITE_APP_BASE_API]: {
+          target: env.VITE_SERVER,
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, ''),
+        }
+      }
+    }
   }
-});
+})

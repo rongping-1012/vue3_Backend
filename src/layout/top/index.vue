@@ -1,12 +1,11 @@
 <template>
   <div class="top">
     <div class="top_left">
-      <Breadcrumb/>
+      <Breadcrumb />
     </div>
     <div class="top_right">
-      <Dropdown/>
+      <Dropdown />
     </div>
-
   </div>
 </template>
 
@@ -14,7 +13,7 @@
 import Breadcrumb from './breadcrumb/index.vue'
 import Dropdown from './dropdown/index.vue'
 defineOptions({
-  name: 'Top'
+  name: 'Top',
 })
 </script>
 

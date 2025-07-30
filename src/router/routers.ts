@@ -1,4 +1,3 @@
-
 export const routes = [
   {
     path: '/login',
@@ -7,8 +6,8 @@ export const routes = [
     meta: {
       title: '登录',
       hidden: true,
-      icon: 'Promotion'
-    }
+      icon: 'Promotion',
+    },
   },
   {
     path: '/',
@@ -16,8 +15,8 @@ export const routes = [
     name: 'layout',
     meta: {
       title: 'layout',
-      hidden: false,
-      icon: 'Avatar'
+      hidden: true,
+      icon: 'Avatar',
     },
     redirect: '/home',
     children: [
@@ -28,10 +27,10 @@ export const routes = [
         meta: {
           title: '首页',
           hidden: false,
-          icon: 'HomeFilled'
-        }
-      }
-    ]
+          icon: 'HomeFilled',
+        },
+      },
+    ],
   },
   {
     path: '/acl',
@@ -40,8 +39,9 @@ export const routes = [
     meta: {
       title: '权限管理',
       hidden: false,
-      icon: 'Lock'
+      icon: 'Lock',
     },
+    redirect: '/acl/user',
     children: [
       {
         path: '/acl/user',
@@ -50,8 +50,8 @@ export const routes = [
         meta: {
           title: '用户管理',
           hidden: false,
-          icon: 'UserFilled'
-        }
+          icon: 'UserFilled',
+        },
       },
       {
         path: '/acl/role',
@@ -60,8 +60,8 @@ export const routes = [
         meta: {
           title: '角色管理',
           hidden: false,
-          icon: 'Avatar'
-        }
+          icon: 'Avatar',
+        },
       },
       {
         path: '/acl/permission',
@@ -70,10 +70,10 @@ export const routes = [
         meta: {
           title: '菜单管理',
           hidden: false,
-          icon: 'Management'
-        }
-      }
-    ]
+          icon: 'Management',
+        },
+      },
+    ],
   },
   {
     path: '/product',
@@ -130,8 +130,8 @@ export const routes = [
     meta: {
       title: '数据大屏',
       hidden: false,
-      icon: 'DataAnalysis'
-    }
+      icon: 'DataAnalysis',
+    },
   },
   {
     path: '/404',
@@ -140,8 +140,8 @@ export const routes = [
     meta: {
       title: '404',
       hidden: true,
-      icon: 'WarningFilled'
-    }
+      icon: 'WarningFilled',
+    },
   },
   {
     path: '/:pathMatch(.*)*',
@@ -150,7 +150,7 @@ export const routes = [
     meta: {
       title: '任意路由',
       hidden: true,
-      icon: 'View'
-    }
+      icon: 'View',
+    },
   },
 ]

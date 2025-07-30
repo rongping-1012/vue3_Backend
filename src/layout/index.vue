@@ -6,8 +6,7 @@
       <!-- 滚动条 -->
       <el-scrollbar class="scrollbar">
         <!-- 动态生成菜单 -->
-        <el-menu :default-active="$route.path" background-color="$menu-bg-color" text-color="white"
-          active-text-color="orange">
+        <el-menu :default-active="$route.path" background-color="#2f2f2f" text-color="white" active-text-color="orange">
           <Menu :menuList="user.menuRouters" />
         </el-menu>
       </el-scrollbar>
@@ -28,25 +27,23 @@ import Logo from './logo/index.vue'
 import Menu from './menu/index.vue'
 import Main from './main/index.vue'
 import Top from './top/index.vue'
-import userStore from '@/store/models/user';
-import useCollapseStore from '@/store/models/collapse';
-import { useRoute } from 'vue-router';
-let user = userStore();
+import userStore from '@/store/models/user'
+import useCollapseStore from '@/store/models/collapse'
+import { useRoute } from 'vue-router'
+let user = userStore()
 let collapseStore = useCollapseStore()
 // 获取当前路由
-let $route = useRoute();
+let $route = useRoute()
 
 defineOptions({
-  name: 'Layout'
-});
-
+  name: 'Layout',
+})
 </script>
 
 <style scoped lang="scss">
 .layout_container {
   width: 100%;
   height: 100vh;
-  background-color: #5599ff;
 
   .layout_left {
     width: $menu-width;
@@ -54,12 +51,10 @@ defineOptions({
     background-color: $menu-bg-color;
     color: white;
     float: left;
-
     .scrollbar {
       width: 100%;
       height: calc(100vh - $header-height);
     }
-
   }
 
   .layout_top {
@@ -85,7 +80,7 @@ defineOptions({
     height: calc(100vh - $header-height);
     left: $menu-width;
     top: $header-height;
-    background-color: yellow;
+    background-color: #fff;
     padding: 20px;
     overflow: auto;
     transition: all 0.3s;

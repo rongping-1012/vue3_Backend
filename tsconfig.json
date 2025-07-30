@@ -2,10 +2,7 @@
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "target": "ES2023",
-    "lib": [
-      "ES2023",
-      "DOM"
-    ],
+    "lib": ["ES2023", "DOM"],
     "module": "ESNext",
     "moduleResolution": "bundler", // 改为 bundler 模式
     "skipLibCheck": true,
@@ -17,13 +14,9 @@
     "isolatedModules": true, // 新增：为 Babel/TSX 启用孤立模块编译
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     },
-    "types": [
-      "vite/client"
-    ],
+    "types": ["vite/client"],
     "moduleDetection": "force"
   },
   "include": [
@@ -33,7 +26,5 @@
     "src/**/*.vue",
     "vite.config.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
