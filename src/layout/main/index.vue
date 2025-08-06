@@ -6,24 +6,26 @@
           <!-- v-if可以控制组件重建与销毁 -->
           <component :is="Component" v-if="flag" />
         </div>
-
       </transition>
     </router-view>
   </div>
 </template>
 
 <script setup lang="ts">
-import useCollapseStore from '@/store/models/collapse';
-import { watch, ref, nextTick } from 'vue';
+import useCollapseStore from '@/store/models/collapse'
+import { watch, ref, nextTick } from 'vue'
 let collapseStore = useCollapseStore()
 let flag = ref(true)
 //监听数据变化
-watch(() => collapseStore.refresh, () => {
-  flag.value = false
-  nextTick(() => {
-    flag.value = true
-  })
-})
+watch(
+  () => collapseStore.refresh,
+  () => {
+    flag.value = false
+    nextTick(() => {
+      flag.value = true
+    })
+  },
+)
 
 defineOptions({
   name: 'Main',

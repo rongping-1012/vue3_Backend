@@ -1,11 +1,11 @@
 <template>
-  <el-button :icon="Refresh" circle @click="reFlash"/>
+  <el-button :icon="Refresh" circle @click="reFlash" />
   <el-button :icon="FullScreen" circle @click="fullScreen" />
   <el-button :icon="Setting" circle />
   <img
     :src="useStore.avatar"
     alt=""
-    style="width: 32px; height: 32px; margin: 0 20px; border-radius: 50%;"
+    style="width: 32px; height: 32px; margin: 0 20px; border-radius: 50%"
   />
   <el-dropdown style="margin-right: 15px">
     <span class="el-dropdown-link">
@@ -24,9 +24,9 @@
 
 <script setup lang="ts">
 import { FullScreen, Refresh, Setting } from '@element-plus/icons-vue'
-import useCollapseStore from '@/store/models/collapse';
-import userStore from '@/store/models/user';
-import { useRouter, useRoute } from 'vue-router';
+import useCollapseStore from '@/store/models/collapse'
+import userStore from '@/store/models/user'
+import { useRouter, useRoute } from 'vue-router'
 
 const $router = useRouter()
 const $route = useRoute()
@@ -49,10 +49,10 @@ const fullScreen = () => {
 }
 
 // 退出登录
-const logout = async() => {
+const logout = async () => {
   await useStore.userLogout()
-    // 退出登录后可以跳转到登录页面
-    $router.push({path: '/login', query: { redirect: $route.path }})
+  // 退出登录后可以跳转到登录页面
+  $router.push({ path: '/login', query: { redirect: $route.path } })
 }
 
 defineOptions({

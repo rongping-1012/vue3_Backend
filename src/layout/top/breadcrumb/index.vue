@@ -3,9 +3,13 @@
     <component :is="collapseStore.isCollapse ? 'Expand' : 'Fold'"></component>
   </el-icon>
   <el-breadcrumb :separator-icon="ArrowRight">
-    <el-breadcrumb-item v-for="(item, index) in $route.matched" :key="index" v-show="!item.meta.hidden"
-    :to="item.path">
-      <el-icon style="vertical-align: -15%;">
+    <el-breadcrumb-item
+      v-for="(item, index) in $route.matched"
+      :key="index"
+      v-show="!item.meta.hidden"
+      :to="item.path"
+    >
+      <el-icon style="vertical-align: -15%">
         <component :is="item.meta.icon"></component>
       </el-icon>
       {{ item.meta.title }}
@@ -21,9 +25,6 @@ import { useRoute } from 'vue-router'
 let collapseStore = useCollapseStore()
 // 获取当前路由
 let $route = useRoute()
-
-
-
 
 defineOptions({
   name: 'Breadcrumb',

@@ -1,3 +1,11 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+
+  outline: none;
+}
+
 html,
 body,
 div,
@@ -79,15 +87,17 @@ time,
 mark,
 audio,
 video {
+  font: inherit;
+  font-size: 100%;
+
   margin: 0;
   padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
+
   vertical-align: baseline;
+
+  border: 0;
 }
 
-// HTML5 display-role reset for older browsers
 article,
 aside,
 details,
@@ -114,17 +124,63 @@ ul {
 blockquote,
 q {
   quotes: none;
+
+  &:before,
+  &:after {
+    content: '';
+    content: none;
+  }
 }
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none;
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+
+  position: relative;
+
+  vertical-align: baseline;
+}
+
+sup {
+  top: -.5em;
+}
+
+sub {
+  bottom: -.25em;
 }
 
 table {
-  border-collapse: collapse;
   border-spacing: 0;
+  border-collapse: collapse;
+}
+
+input,
+textarea,
+button {
+  font-family: inhert;
+  font-size: inherit;
+
+  color: inherit;
+}
+
+select {
+  text-indent: .01px;
+  text-overflow: '';
+
+  border: 0;
+  border-radius: 0;
+
+  // -webkit-appearance: none;
+  // -moz-appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+code,
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
 }

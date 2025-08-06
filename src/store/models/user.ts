@@ -2,14 +2,16 @@ import { defineStore } from 'pinia'
 // 引入接口
 import { reqLogin, reqUserInfo, reqLogout } from '@/api/user'
 // 引入类型
-import { loginFormData, loginResponseData, userInfoResponseData } from '@/api/user/type'
+import {
+  loginFormData,
+  loginResponseData,
+  userInfoResponseData,
+} from '@/api/user/type'
 import type { UserState } from './type/type'
 // 引入token工具函数
 import { setToken, getToken, removeToken } from '@/utils/token'
 // 引入常量路由
 import { routes } from '@/router/routers'
-import { log } from 'console'
-
 
 let userStore = defineStore('user', {
   state: (): UserState => {
@@ -23,13 +25,13 @@ let userStore = defineStore('user', {
   actions: {
     async userLogin(data: loginFormData) {
       // 登录逻辑
-      // let res: loginResponseData = await reqLogin(data)
-      let res: loginResponseData = {
-        code: 200,
-        message: 'ok',
-        ok: 'true',
-        data: '123',
-      }
+      let res: loginResponseData = await reqLogin(data)
+      // let res: loginResponseData = {
+      //   code: 200,
+      //   message: 'ok',
+      //   ok: 'true',
+      //   data: '123',
+      // }
       if (res.code === 200) {
         // 登录成功，存储token
         this.token = res.data as string
@@ -43,19 +45,20 @@ let userStore = defineStore('user', {
     },
     // 获取用户信息
     async getUserInfo() {
-      // let res: userInfoResponseData = await reqUserInfo()
-      let res: userInfoResponseData = {
-        code: 200,
-        message: 'ok',
-        ok: 'true',
-        data: {
-          routes: [],
-          buttons: [],
-          roles: [],
-          name: 'admin',
-          avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-        },
-      }
+      let res: userInfoResponseData = await reqUserInfo()
+      // let res: userInfoResponseData = {
+      //   code: 200,
+      //   message: 'ok',
+      //   ok: 'true',
+      //   data: {
+      //     routes: [],
+      //     buttons: [],
+      //     roles: [],
+      //     name: 'admin',
+      //     avatar:
+      //       'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+      //   },
+      // }
       if (res.code === 200) {
         // 获取用户信息成功
         this.username = res.data.name
@@ -64,7 +67,6 @@ let userStore = defineStore('user', {
       } else {
         return Promise.reject(new Error(res.message))
       }
-      
     },
     // 退出登录
     async userLogout() {

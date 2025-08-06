@@ -68,9 +68,9 @@ const login = async () => {
     loading.value = true
     // 异步操作确保按序执行
     await userStore.userLogin(loginForm)
-    let redirect:any = $route.query.redirect
+    let redirect: any = $route.query.redirect
     // 登录时有query参数，登录成功后跳转到首页
-    $router.push({path: redirect || '/'})
+    $router.push({ path: redirect || '/' })
     ElNotification({
       type: 'success',
       message: '欢迎回来',

@@ -4,7 +4,7 @@ let useCollapseStore = defineStore('collapse', {
   state: () => {
     return {
       isCollapse: false, // 菜单折叠状态
-      refresh: false
+      refresh: false,
     }
   },
   actions: {
@@ -13,7 +13,7 @@ let useCollapseStore = defineStore('collapse', {
     },
     updateReflash() {
       this.refresh = !this.refresh
-    }
+    },
   },
   getters: {},
 })

@@ -48,7 +48,6 @@ router.beforeEach(async (to, from, next) => {
     }
     // 有用户信息或已成功获取用户信息，放行
     next()
-
   } else {
     // 未登录状态
     if (to.path === '/login') {

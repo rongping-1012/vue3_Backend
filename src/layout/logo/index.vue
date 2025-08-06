@@ -5,12 +5,14 @@
       alt="logo"
       style="width: 32px; height: 32px; margin-left: 2px"
     />
-    <span style="font-size: larger; margin-left: 17px">{{ setting.title }}</span>
+    <span style="font-size: larger; margin-left: 17px">
+      {{ setting.title }}
+    </span>
   </div>
 </template>
 
 <script setup lang="ts">
-import setting from '@/setting';
+import setting from '@/setting'
 
 defineOptions({
   name: 'Logo',

@@ -6,7 +6,12 @@
       <!-- 滚动条 -->
       <el-scrollbar class="scrollbar">
         <!-- 动态生成菜单 -->
-        <el-menu :default-active="$route.path" background-color="#2f2f2f" text-color="white" active-text-color="orange">
+        <el-menu
+          :default-active="$route.path"
+          background-color="#2f2f2f"
+          text-color="white"
+          active-text-color="orange"
+        >
           <Menu :menuList="user.menuRouters" />
         </el-menu>
       </el-scrollbar>
