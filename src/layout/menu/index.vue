@@ -49,7 +49,7 @@
           <span>{{ item.meta.title }}</span>
         </template>
         <!-- 递归渲染子菜单 -->
-        <Menu :menuList="item.children"  style="padding-left: 20px;"/>
+        <Menu :menuList="item.children" style="padding-left: 20px" />
       </el-sub-menu>
     </template>
   </el-menu>

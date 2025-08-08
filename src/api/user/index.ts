@@ -1,5 +1,9 @@
 import request from '@/utils/request'
-import type { loginFormData, loginResponseData, userInfoResponseData } from './type'
+import type {
+  loginFormData,
+  loginResponseData,
+  userInfoResponseData,
+} from './type'
 
 //定义枚举类统一管理接口
 enum API {

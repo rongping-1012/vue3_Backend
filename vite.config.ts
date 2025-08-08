@@ -51,6 +51,6 @@ export default defineConfig(({ command, mode }) => {
           rewrite: (path) => path.replace(/^\/api/, ''),
         },
       },
-    }
+    },
   }
 })

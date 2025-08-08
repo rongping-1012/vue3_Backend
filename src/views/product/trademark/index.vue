@@ -4,7 +4,13 @@
       添加品牌
     </el-button>
     <el-table style="margin: 10px 0" border :data="trademarkList">
-      <el-table-column label="序号" width="80px" align="center" header-align="center" type="index"></el-table-column>
+      <el-table-column
+        label="序号"
+        width="80px"
+        align="center"
+        header-align="center"
+        type="index"
+      ></el-table-column>
       <el-table-column label="品牌名称" header-align="center">
         <template #="{ row, $index }">
           <pre>{{ row.tmName }}</pre>
@@ -13,14 +19,28 @@
 
       <el-table-column label="品牌LOGO" header-align="center">
         <template #="{ row, $index }">
-          <img :src="row.logoUrl" alt="图片加载失败" style="width: 100px; height: 100px" />
+          <img
+            :src="row.logoUrl"
+            alt="图片加载失败"
+            style="width: 100px; height: 100px"
+          />
         </template>
       </el-table-column>
 
       <el-table-column label="品牌操作" header-align="center">
         <template #="{ row, $index }">
-          <el-button type="primary" size="small" icon="Edit" @click="updataTrademark(row)"></el-button>
-          <el-popconfirm title="确定要删除吗？" @confirm="deleteTrademark(row.id)" icon="Delete" width="250">
+          <el-button
+            type="primary"
+            size="small"
+            icon="Edit"
+            @click="updataTrademark(row)"
+          ></el-button>
+          <el-popconfirm
+            title="确定要删除吗？"
+            @confirm="deleteTrademark(row.id)"
+            icon="Delete"
+            width="250"
+          >
             <template #reference>
               <el-button type="danger" size="small" icon="Delete"></el-button>
             </template>
@@ -28,21 +48,52 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination @current-change="getHasTrademark(currentPage)" @size-change="sizeChange" :pager-count="7"
-      v-model:current-page="currentPage" v-model:page-size="pageSize" :page-sizes="[3, 5, 7, 9]" :background="true"
-      layout="prev, pager, next, jumper, ->, sizes, total" :total="total" />
+    <el-pagination
+      @current-change="getHasTrademark(currentPage)"
+      @size-change="sizeChange"
+      :pager-count="7"
+      v-model:current-page="currentPage"
+      v-model:page-size="pageSize"
+      :page-sizes="[3, 5, 7, 9]"
+      :background="true"
+      layout="prev, pager, next, jumper, ->, sizes, total"
+      :total="total"
+    />
   </el-card>
 
   <!-- 新增修改模态框 -->
-  <el-dialog v-model="dialogFormVisible" :title="trademarkParams.id ? '修改品牌' : '添加品牌'" width="500">
-    <el-form label-width="auto" label-position="left" :model="trademarkParams" :rules="rules" ref="forms">
+  <el-dialog
+    v-model="dialogFormVisible"
+    :title="trademarkParams.id ? '修改品牌' : '添加品牌'"
+    width="500"
+  >
+    <el-form
+      label-width="auto"
+      label-position="left"
+      :model="trademarkParams"
+      :rules="rules"
+      ref="forms"
+    >
       <el-form-item label="品牌名称" prop="tmName">
-        <el-input placeholder="请输入品牌名称" v-model="trademarkParams.tmName"></el-input>
+        <el-input
+          placeholder="请输入品牌名称"
+          v-model="trademarkParams.tmName"
+        ></el-input>
       </el-form-item>
       <el-form-item label="品牌LOGO" prop="logoUrl">
-        <el-upload :headers="{ token: getToken() }" class="avatar-uploader" action="/api/admin/product/fileUpload"
-          :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
-          <img v-if="trademarkParams.logoUrl" :src="trademarkParams.logoUrl" class="avatar" />
+        <el-upload
+          :headers="{ token: getToken() }"
+          class="avatar-uploader"
+          action="/api/admin/product/fileUpload"
+          :show-file-list="false"
+          :on-success="handleAvatarSuccess"
+          :before-upload="beforeAvatarUpload"
+        >
+          <img
+            v-if="trademarkParams.logoUrl"
+            :src="trademarkParams.logoUrl"
+            class="avatar"
+          />
           <el-icon v-else class="avatar-uploader-icon">
             <Plus />
           </el-icon>

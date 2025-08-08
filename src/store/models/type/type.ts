@@ -9,11 +9,11 @@ export interface UserState {
   avatar: string // 用户头像
 }
 
-export interface CategoryState { 
-  c1Id: number | string,
-  c2Id: number | string,
-  c3Id: number | string,
-  c1List: CategoryObj[],
+export interface CategoryState {
+  c1Id: number | string
+  c2Id: number | string
+  c3Id: number | string
+  c1List: CategoryObj[]
   c2List: CategoryObj[]
   c3List: CategoryObj[]
 }
